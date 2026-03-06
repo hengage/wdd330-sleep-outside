@@ -15,7 +15,7 @@ function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
-      src="${item.Image.replace('../', '../../')}"
+      src="${item.Image.replace('../images/', '/images/')}"
       alt="${item.Name}"
     />
   </a>
