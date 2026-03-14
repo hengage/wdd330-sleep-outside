@@ -7,8 +7,11 @@ function renderCartContents() {
       '<p>Your cart is empty</p>';
     return;
   }
-  const cartTotal = calculateCartTotal(cartItems);
-  renderCartTotal(cartTotal);
+  if (cartItems.length > 0) {
+    const cartTotal = calculateCartTotal(cartItems);
+    renderCartTotal(cartTotal);
+  }
+
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector('.product-list').innerHTML = htmlItems.join('');
 }
