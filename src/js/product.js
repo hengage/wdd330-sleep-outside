@@ -1,29 +1,14 @@
-import { setLocalStorage, getLocalStorage } from './utils.mjs';
+import { getParam } from './utils.mjs';
 import ProductData from './ProductData.mjs';
+import ProductDetails from './ProductDetails.mjs';
 
-const dataSource = new ProductData('tents');
+const productId = getParam('product');
 
-function addProductToCart(product) {
-  const currentCart = getLocalStorage('so-cart') || [];
-  const existingProductIndex = currentCart.findIndex(
-    (item) => item.Id === product.Id,
-  );
-
-  if (existingProductIndex !== -1) {
-    currentCart[existingProductIndex].qty++;
-  } else {
-    product.qty = 1;
-    currentCart.push(product);
-  }
-  setLocalStorage('so-cart', currentCart);
+if (!productId) {
+  document.querySelector('.product-detail').innerHTML =
+    '<p>Error: No product specified. Please select a product from the home page.</p>';
+} else {
+  const dataSource = new ProductData('tents');
+  const product = new ProductDetails(productId, dataSource);
+  product.init();
 }
-// add to cart button event handler
-async function addToCartHandler(e) {
-  const product = await dataSource.findProductById(e.target.dataset.id);
-  addProductToCart(product);
-}
-
-// add listener to Add to Cart button
-document
-  .getElementById('addToCart')
-  .addEventListener('click', addToCartHandler);
