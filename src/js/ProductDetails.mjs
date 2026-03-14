@@ -52,9 +52,5 @@ export default class ProductDetails {
         <button id="addToCart" data-id="${this.product.Id}">Add to Cart</button>
       </div>
     `;
-    // Re-attach event listener to new button
-    document
-      .getElementById('addToCart')
-      .addEventListener('click', this.addProductToCart.bind(this));
   }
 }
