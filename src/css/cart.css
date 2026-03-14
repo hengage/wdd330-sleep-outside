@@ -1,0 +1,18 @@
+#cart-total {
+  font-size: var(--medium-font);
+  font-weight: bold;
+  text-align: right;
+  margin-top: 20px;
+  width: 100%;
+  display: block;
+}
+
+.cart-card__total_price {
+  font-weight: bold;
+  margin-top: 5px;
+  text-align: right;
+  display: block;
+  grid-row: 3;
+  grid-column: 3;
+  white-space: nowrap;
+}
