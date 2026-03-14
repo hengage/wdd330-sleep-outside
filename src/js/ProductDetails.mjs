@@ -10,8 +10,10 @@ export default class ProductDetails {
   async init() {
     // fetch product details using dataSource
     this.product = await this.dataSource.findProductById(this.productId);
+    
     // render the HTML
     this.renderProductDetails();
+
     // set up event listener for Add to Cart button
     document
       .getElementById('addToCart')
@@ -52,9 +54,5 @@ export default class ProductDetails {
         <button id="addToCart" data-id="${this.product.Id}">Add to Cart</button>
       </div>
     `;
-    // Re-attach event listener to new button
-    document
-      .getElementById('addToCart')
-      .addEventListener('click', this.addProductToCart.bind(this));
   }
 }
