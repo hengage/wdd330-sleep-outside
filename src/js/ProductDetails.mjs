@@ -26,8 +26,12 @@ export default class ProductDetails {
 
     if (existingProductIndex !== -1) {
       currentCart[existingProductIndex].qty++;
+      currentCart[existingProductIndex].totalPrice =
+        currentCart[existingProductIndex].qty *
+        currentCart[existingProductIndex].FinalPrice;
     } else {
       this.product.qty = 1;
+      this.product.totalPrice = this.product.FinalPrice;
       currentCart.push(this.product);
     }
     setLocalStorage('so-cart', currentCart);
