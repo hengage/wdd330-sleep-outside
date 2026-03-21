@@ -7,8 +7,21 @@ function renderCartContents() {
       '<p>Your cart is empty</p>';
     return;
   }
+  if (cartItems.length > 0) {
+    const cartTotal = calculateCartTotal(cartItems);
+    renderCartTotal(cartTotal);
+  }
+
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector('.product-list').innerHTML = htmlItems.join('');
+}
+
+function calculateCartTotal(cartItems) {
+  return cartItems.reduce((total, item) => total + item.totalPrice, 0);
+}
+
+function renderCartTotal(total) {
+  document.querySelector('#cart-total').innerHTML = `Cart Total: $${total}`;
 }
 
 function cartItemTemplate(item) {
@@ -25,6 +38,7 @@ function cartItemTemplate(item) {
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
   <p class="cart-card__quantity">qty: ${item.qty || 1}</p>
   <p class="cart-card__price">$${item.FinalPrice}</p>
+  <p class="cart-card__total_price">Product Total: $${item.totalPrice}</p>
 </li>`;
 
   return newItem;
