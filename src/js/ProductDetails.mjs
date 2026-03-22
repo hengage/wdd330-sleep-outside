@@ -27,10 +27,9 @@ export default class ProductDetails {
     }
 
     addProductToCart() {
-        const cart = getLocalStorage('cart') || [];
+        const cart = getLocalStorage('so-cart') || [];
         cart.push(this.product);
-        setLocalStorage('cart', cart);
-        console.log('Product added to cart:', this.product);
+        setLocalStorage('so-cart', cart);
     }
 }
 
