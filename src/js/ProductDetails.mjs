@@ -16,12 +16,12 @@ export default class ProductDetails {
 
     renderProductDetails(product) {
         document.querySelector('h3').textContent = product.Brand.Name;
-        document.querySelector("h2").textContent = product.NameWithoutBrand;
-        document.getElementById("product_img").src = product.Image;
-        document.getElementById("product_img").alt = product.NameWithoutBrand;
-        document.getElementsByClassName("product-card__price")[0].textContent = `Price: $${product.ListPrice}`;
-        document.getElementsByClassName("product__color")[0].textContent = `Colors: ${product.Colors[0].ColorName}`;
-        document.getElementsByClassName("product__description")[0].innerHTML = product.DescriptionHtmlSimple;
+        document.querySelector('h2').textContent = product.NameWithoutBrand;
+        document.getElementById('product_img').src = product.Image;
+        document.getElementById('product_img').alt = product.NameWithoutBrand;
+        document.getElementsByClassName('product-card__price')[0].textContent = `Price: $${product.ListPrice}`;
+        document.getElementsByClassName('product__color')[0].textContent = `Colors: ${product.Colors[0].ColorName}`;
+        document.getElementsByClassName('product__description')[0].innerHTML = product.DescriptionHtmlSimple;
 
         document.getElementById('addToCart').dataset.productId = product.Id;
     }
@@ -29,7 +29,11 @@ export default class ProductDetails {
     addProductToCart() {
         const cart = getLocalStorage('so-cart') || [];
         cart.push(this.product);
+<<<<<<< HEAD
         setLocalStorage('so-cart', cart);
+=======
+        setLocalStorage('cart', cart);
+>>>>>>> 5371360583e9c7dde9964ca9346d1fe642d5c863
     }
 }
 
