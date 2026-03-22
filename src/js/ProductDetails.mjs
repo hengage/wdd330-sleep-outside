@@ -29,11 +29,7 @@ export default class ProductDetails {
     addProductToCart() {
         const cart = getLocalStorage('so-cart') || [];
         cart.push(this.product);
-<<<<<<< HEAD
         setLocalStorage('so-cart', cart);
-=======
-        setLocalStorage('cart', cart);
->>>>>>> 5371360583e9c7dde9964ca9346d1fe642d5c863
     }
 }
 
