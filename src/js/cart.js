@@ -1,5 +1,9 @@
 import { getLocalStorage } from './utils.mjs';
 
+function getCartItemImage(item) {
+  return item.Images?.PrimaryMedium || item.Image || '';
+}
+
 function renderCartContents() {
   const cartItems = getLocalStorage('so-cart') || [];
   if (cartItems.length === 0) {
@@ -15,7 +19,7 @@ function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
-      src="${item.Image.replace('../images/', '/images/')}"
+      src="${getCartItemImage(item)}"
       alt="${item.Name}"
     />
   </a>
