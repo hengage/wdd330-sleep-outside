@@ -1,4 +1,6 @@
-import { getLocalStorage } from './utils.mjs';
+import { getLocalStorage, loadHeaderFooter } from './utils.mjs';
+
+loadHeaderFooter();
 
 function getCartItemImage(item) {
   return item.Images?.PrimaryMedium || item.Image || '';
