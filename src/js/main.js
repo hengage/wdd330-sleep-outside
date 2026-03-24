@@ -1,1 +1,3 @@
-// Home page behavior is handled separately from product listing.
+import { loadHeaderFooter } from './utils.mjs';
+
+loadHeaderFooter();
