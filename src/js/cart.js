@@ -2,12 +2,14 @@ import { getLocalStorage, loadHeaderFooter } from './utils.mjs';
 
 loadHeaderFooter();
 
+const cartItemsKey = 'so-cart';
+
 function getCartItemImage(item) {
   return item.Images?.PrimaryMedium || item.Image || '';
 }
 
 function renderCartContents() {
-  const cartItems = getLocalStorage('so-cart') || [];
+  const cartItems = getLocalStorage(cartItemsKey) || [];
   if (cartItems.length === 0) {
     document.querySelector('.product-list').innerHTML =
       '<p>Your cart is empty</p>';
@@ -19,6 +21,14 @@ function renderCartContents() {
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
+  <button
+    class="cart-card__remove"
+    type="button"
+    aria-label="Remove ${item.Name} from cart"
+    data-id="${item.Id}"
+  >
+    x
+  </button>
   <a href="#" class="cart-card__image">
     <img
       src="${getCartItemImage(item)}"
@@ -35,5 +45,19 @@ function cartItemTemplate(item) {
 
   return newItem;
 }
+
+function removeItemFromCart(productId) {
+  const cartItems = getLocalStorage(cartItemsKey) || [];
+  const updatedCartItems = cartItems.filter((item) => item.Id !== productId);
+  localStorage.setItem(cartItemsKey, JSON.stringify(updatedCartItems));
+  renderCartContents();
+}
+
+document.querySelector('.product-list').addEventListener('click', (event) => {
+  const removeButton = event.target.closest('.cart-card__remove');
+  if (!removeButton) return;
+
+  removeItemFromCart(removeButton.dataset.id);
+});
 
 renderCartContents();
