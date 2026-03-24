@@ -10,6 +10,14 @@ function getBaseURL() {
   return baseURL;
 }
 
+function buildApiURL(path) {
+  const normalizedBaseURL = getBaseURL().endsWith('/')
+    ? getBaseURL()
+    : `${getBaseURL()}/`;
+
+  return new URL(path, normalizedBaseURL).toString();
+}
+
 function convertToJson(res) {
   if (res.ok) {
     return res.json();
@@ -20,13 +28,13 @@ function convertToJson(res) {
 
 export default class ProductData {
   async getData(category) {
-    const response = await fetch(`${getBaseURL()}products/search/${category}`);
+    const response = await fetch(buildApiURL(`products/search/${category}`));
     const data = await convertToJson(response);
     return data.Result;
   }
 
   async findProductById(id) {
-    const response = await fetch(`${getBaseURL()}product/${id}`);
+    const response = await fetch(buildApiURL(`product/${id}`));
     const data = await convertToJson(response);
     return data.Result;
   }
