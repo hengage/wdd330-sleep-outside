@@ -18,12 +18,23 @@ function buildApiURL(path) {
   return new URL(path, normalizedBaseURL).toString();
 }
 
-function convertToJson(res) {
+async function convertToJson(res) {
+  const contentType = res.headers.get('content-type') || '';
+  const data = contentType.includes('application/json')
+    ? await res.json()
+    : await res.text();
+
   if (res.ok) {
-    return res.json();
-  } else {
-    throw new Error('Bad Response');
+    return data;
   }
+
+  const message =
+    data?.message ||
+    data?.Message ||
+    data?.error ||
+    (typeof data === 'string' ? data : 'Bad Response');
+
+  throw new Error(message);
 }
 
 export default class ProductData {
@@ -37,5 +48,16 @@ export default class ProductData {
     const response = await fetch(buildApiURL(`product/${id}`));
     const data = await convertToJson(response);
     return data.Result;
+  }
+
+  async checkout(payload) {
+    const response = await fetch(buildApiURL('checkout'), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    });
+    return convertToJson(response);
   }
 }

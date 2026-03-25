@@ -314,6 +314,74 @@ button {
   font-weight: 700;
 }
 
+/* ============= Checkout styles ============= */
+.cart-checkout {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.25rem;
+  background-color: var(--secondary-color);
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.checkout-columns {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.checkout-form fieldset,
+.checkout-summary {
+  border: 1px solid var(--light-grey);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.checkout-form legend,
+.checkout-summary h3 {
+  font-family: var(--font-headline);
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.checkout-form label {
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.checkout-form input {
+  display: block;
+  width: 100%;
+  margin-top: 0.35rem;
+  padding: 0.6rem;
+  border: 1px solid var(--light-grey);
+  font: inherit;
+}
+
+.summary-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.summary-list div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.summary-total {
+  padding-top: 0.75rem;
+  border-top: 2px solid var(--primary-color);
+  font-weight: 700;
+}
+
+.checkout-message {
+  min-height: 1.5rem;
+  padding-left: 0;
+}
+/* =========== End checkout styles =========== */
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
@@ -326,6 +394,11 @@ button {
 
   .category-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .checkout-columns {
+    grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+    align-items: start;
   }
 
   .cart-card {

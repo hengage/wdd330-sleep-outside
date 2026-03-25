@@ -66,11 +66,22 @@ function renderCartTotal(items) {
   const existing = document.querySelector('.cart-total');
   if (existing) existing.remove();
 
+  const existingCheckoutButton = document.querySelector('.cart-checkout');
+  if (existingCheckoutButton) existingCheckoutButton.remove();
+
   const total = calculateCartTotal(items);
   const totalEl = document.createElement('p');
   totalEl.classList.add('cart-total');
   totalEl.textContent = `Cart Total: $${total.toFixed(2)}`;
   document.querySelector('.product-list').insertAdjacentElement('afterend', totalEl);
+
+  if (items.length > 0) {
+    const checkoutLink = document.createElement('a');
+    checkoutLink.classList.add('cart-checkout');
+    checkoutLink.href = '../checkout/index.html';
+    checkoutLink.textContent = 'Proceed to Checkout';
+    totalEl.insertAdjacentElement('afterend', checkoutLink);
+  }
 }
 
 document.querySelector('.product-list').addEventListener('click', (event) => {
