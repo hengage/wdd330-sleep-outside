@@ -304,6 +304,16 @@ button {
   grid-column: 3;
 }
 
+.cart-total {
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--light-grey);
+  border-left: 6px solid var(--secondary-color);
+  background-color: white;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
