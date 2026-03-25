@@ -59,7 +59,6 @@ if (expirationInput) {
 }
 
 const form = document.querySelector('#checkout-form');
-const message = document.querySelector('#checkout-message');
 
 if (form) {
   form.addEventListener('submit', async (event) => {
@@ -76,14 +75,9 @@ if (form) {
       checkout.clearCart();
       form.reset();
       checkout.init();
-      if (message) {
-        message.textContent =
-          result?.message || 'Order submitted successfully.';
-      }
+      alert(result?.message || 'Order submitted successfully.');
     } catch (error) {
-      if (message) {
-        message.textContent = error.message || 'Checkout failed.';
-      }
+      alert(error.message || 'Checkout failed.');
     }
   });
 }
