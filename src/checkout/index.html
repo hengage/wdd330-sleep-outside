@@ -57,16 +57,33 @@
                   type="text"
                   name="cardNumber"
                   inputmode="numeric"
+                  pattern="^\d{16}$"
+                  title="Enter a 16-digit card number"
                   required
                 />
               </label>
               <label>
                 Expiration Date
-                <input type="text" name="expiration" placeholder="MM/YY" required />
+                <input
+                  type="text"
+                  name="expiration"
+                  id="expiration"
+                  placeholder="MM/YY"
+                  pattern="^(0[1-9]|1[0-2])\/\d{2}$"
+                  title="Enter the expiration date in MM/YY format"
+                  required
+                />
               </label>
               <label>
                 Security Code
-                <input type="text" name="code" inputmode="numeric" required />
+                <input
+                  type="text"
+                  name="code"
+                  inputmode="numeric"
+                  pattern="^\d{3}$"
+                  title="Enter a 3-digit security code"
+                  required
+                />
               </label>
             </fieldset>
 
