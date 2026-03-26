@@ -14,12 +14,7 @@ export function setLocalStorage(key, data) {
 
 export function getCartCount(key = 'so-cart') {
   const cartItems = getLocalStorage(key) || [];
-
-  if (cartItems.length === 0) {
-    return 0;
-  }
-
-  return cartItems.reduce((count, item) => count + (item.qty || 1), 0);
+  return cartItems.length;
 }
 
 export function renderCartCountBadge(count) {
