@@ -13,8 +13,106 @@
     <header class="divider" id="main-header"></header>
 
     <main class="divider">
-      <section class="products">
+      <section class="products checkout-layout">
         <h2>Review & Place your Order</h2>
+        <div class="checkout-columns">
+          <form class="checkout-form" id="checkout-form" name="checkout">
+            <fieldset>
+              <legend>Customer Name</legend>
+              <label>
+                First Name
+                <input type="text" name="fname" required />
+              </label>
+              <label>
+                Last Name
+                <input type="text" name="lname" required />
+              </label>
+            </fieldset>
+
+            <fieldset>
+              <legend>Address</legend>
+              <label>
+                Street Address
+                <input type="text" name="street" required />
+              </label>
+              <label>
+                City
+                <input type="text" name="city" required />
+              </label>
+              <label>
+                State
+                <input type="text" name="state" required />
+              </label>
+              <label>
+                Zip Code
+                <input type="text" name="zip" id="zip" required />
+              </label>
+            </fieldset>
+
+            <fieldset>
+              <legend>Payment</legend>
+              <label>
+                Credit Card Number
+                <input
+                  type="text"
+                  name="cardNumber"
+                  inputmode="numeric"
+                  pattern="^\d{16}$"
+                  title="Enter a 16-digit card number"
+                  required
+                />
+              </label>
+              <label>
+                Expiration Date
+                <input
+                  type="text"
+                  name="expiration"
+                  id="expiration"
+                  placeholder="MM/YY"
+                  pattern="^(0[1-9]|1[0-2])\/\d{2}$"
+                  title="Enter the expiration date in MM/YY format"
+                  required
+                />
+              </label>
+              <label>
+                Security Code
+                <input
+                  type="text"
+                  name="code"
+                  inputmode="numeric"
+                  pattern="^\d{3}$"
+                  title="Enter a 3-digit security code"
+                  required
+                />
+              </label>
+            </fieldset>
+
+            <button type="submit">Place Order</button>
+            <p class="checkout-message" id="checkout-message" aria-live="polite"></p>
+          </form>
+
+          <section class="checkout-summary">
+            <h3>Order Summary</h3>
+            <dl class="summary-list">
+              <div>
+                <dt>Subtotal</dt>
+                <dd id="itemSubtotal">$0.00</dd>
+              </div>
+              <div>
+                <dt>Shipping Estimate</dt>
+                <dd id="shipping">$0.00</dd>
+              </div>
+              <div>
+                <dt>Tax</dt>
+                <dd id="tax">$0.00</dd>
+              </div>
+              <div class="summary-total">
+                <dt>Order Total</dt>
+                <dd id="orderTotal">$0.00</dd>
+              </div>
+            </dl>
+          </section>
+        </div>
       </section>
     </main>
 

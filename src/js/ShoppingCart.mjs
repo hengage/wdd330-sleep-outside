@@ -1,7 +1,7 @@
 import {
-  getLocalStorage,
-  setLocalStorage,
+  getCartItems,
   renderListWithTemplate,
+  setCartItems,
 } from './utils.mjs';
 
 function cartItemTemplate(item) {
@@ -24,7 +24,7 @@ function cartItemTemplate(item) {
 
 export default class ShoppingCart {
   constructor() {
-    this.items = getLocalStorage('so-cart') || [];
+    this.items = getCartItems();
     this.listElement = document.querySelector('.product-list');
   }
 
@@ -65,19 +65,19 @@ export default class ShoppingCart {
 
   addItem(item) {
     this.items.push(item);
-    setLocalStorage('so-cart', this.items);
+    setCartItems(this.items);
     this.renderCart();
   }
 
   removeItem(index) {
     this.items.splice(index, 1);
-    setLocalStorage('so-cart', this.items);
+    setCartItems(this.items);
     this.renderCart();
   }
 
   clearCart() {
     this.items = [];
-    setLocalStorage('so-cart', this.items);
+    setCartItems(this.items);
     this.renderCart();
   }
 
