@@ -140,9 +140,10 @@ button {
   height: 1.1rem;
   padding: 0 0.25rem;
   border-radius: 999px;
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
   color: white;
-  font-size: 0.7rem;
+  border: 1px solid white;
+  font-size: 0.8rem;
   font-weight: 700;
   line-height: 1.1rem;
   text-align: center;
