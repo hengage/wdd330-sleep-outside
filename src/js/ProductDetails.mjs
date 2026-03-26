@@ -1,4 +1,4 @@
-import { setLocalStorage, getLocalStorage } from './utils.mjs';
+import { setCartItems, getCartItems } from './utils.mjs';
 
 function getProductDetailImage(product) {
   return product.Images?.PrimaryLarge || product.Image;
@@ -23,7 +23,7 @@ export default class ProductDetails {
   }
 
   addProductToCart() {
-    const currentCart = getLocalStorage('so-cart') || [];
+    const currentCart = getCartItems();
     const existingProductIndex = currentCart.findIndex(
       (item) => item.Id === this.product.Id,
     );
@@ -34,7 +34,7 @@ export default class ProductDetails {
       this.product.qty = 1;
       currentCart.push(this.product);
     }
-    setLocalStorage('so-cart', currentCart);
+    setCartItems(currentCart);
   }
 
   renderProductDetails() {

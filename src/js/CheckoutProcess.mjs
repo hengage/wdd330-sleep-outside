@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage } from './utils.mjs';
+import { getCartItems, setCartItems } from './utils.mjs';
 
 function formDataToJSON(formElement) {
   const formData = new FormData(formElement);
@@ -33,7 +33,7 @@ export default class CheckoutProcess {
   }
 
   init() {
-    this.list = getLocalStorage(this.key) || [];
+    this.list = getCartItems(this.key);
     this.calculateItemSubTotal();
     this.calculateOrderTotal();
   }
@@ -83,7 +83,7 @@ export default class CheckoutProcess {
   }
 
   clearCart() {
-    setLocalStorage(this.key, []);
+    setCartItems([], this.key);
     this.list = [];
   }
 }

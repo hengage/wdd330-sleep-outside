@@ -12,8 +12,17 @@ export function setLocalStorage(key, data) {
   localStorage.setItem(key, JSON.stringify(data));
 }
 
+export function getCartItems(key = 'so-cart') {
+  return getLocalStorage(key) || [];
+}
+
+export function setCartItems(items, key = 'so-cart') {
+  setLocalStorage(key, items);
+  updateCartCount();
+}
+
 export function getCartCount(key = 'so-cart') {
-  const cartItems = getLocalStorage(key) || [];
+  const cartItems = getCartItems(key);
   return cartItems.length;
 }
 

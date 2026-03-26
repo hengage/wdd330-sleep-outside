@@ -1,4 +1,4 @@
-import { getLocalStorage, loadHeaderFooter } from './utils.mjs';
+import { getCartItems, loadHeaderFooter, setCartItems } from './utils.mjs';
 
 loadHeaderFooter();
 
@@ -9,7 +9,7 @@ function getCartItemImage(item) {
 }
 
 function renderCartContents() {
-  const cartItems = getLocalStorage(cartItemsKey) || [];
+  const cartItems = getCartItems(cartItemsKey);
   if (cartItems.length === 0) {
     document.querySelector('.product-list').innerHTML =
       '<p>Your cart is empty</p>';
@@ -49,9 +49,9 @@ function cartItemTemplate(item) {
 }
 
 function removeItemFromCart(productId) {
-  const cartItems = getLocalStorage(cartItemsKey) || [];
+  const cartItems = getCartItems(cartItemsKey);
   const updatedCartItems = cartItems.filter((item) => item.Id !== productId);
-  localStorage.setItem(cartItemsKey, JSON.stringify(updatedCartItems));
+  setCartItems(updatedCartItems, cartItemsKey);
   renderCartContents();
 }
 
