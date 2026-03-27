@@ -32,6 +32,14 @@ async function convertToJson(res) {
     data?.message ||
     data?.Message ||
     data?.error ||
+    (data &&
+    typeof data === 'object' &&
+    Object.keys(data).length > 0 &&
+    Object.values(data).every((value) => typeof value === 'string')
+      ? Object.entries(data)
+          .map(([, value]) => value)
+          .join(', ')
+      : null) ||
     (typeof data === 'string' ? data : 'Bad Response');
 
   throw new Error(message);

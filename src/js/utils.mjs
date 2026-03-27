@@ -51,6 +51,34 @@ export function updateCartCount() {
   const count = getCartCount();
   renderCartCountBadge(count);
 }
+
+export function alertMessage(message, scroll = true) {
+  let alertElement = document.querySelector('.alert-message');
+
+  if (!alertElement) {
+    alertElement = document.createElement('p');
+    alertElement.classList.add('alert-message');
+    alertElement.setAttribute('role', 'alert');
+
+    const checkoutMessage = document.querySelector('#checkout-message');
+    const mainElement = document.querySelector('main');
+
+    if (checkoutMessage) {
+      checkoutMessage.replaceWith(alertElement);
+    } else if (mainElement) {
+      mainElement.prepend(alertElement);
+    } else {
+      document.body.prepend(alertElement);
+    }
+  }
+
+  alertElement.textContent = message;
+
+  if (scroll) {
+    alertElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
 // set a listener for both touchend and click
 export function setClick(selector, callback) {
   qs(selector).addEventListener('touchend', (event) => {
