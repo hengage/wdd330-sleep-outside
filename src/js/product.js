@@ -1,8 +1,15 @@
-import { getParam, loadHeaderFooter } from './utils.mjs';
+import { getParam, loadHeaderFooter, renderBreadcrumb } from './utils.mjs';
 import ProductData from './ProductData.mjs';
 import ProductDetails from './ProductDetails.mjs';
 
 const productId = getParam('product');
+const category = getParam('category');
+
+await loadHeaderFooter();
+
+if (category) {
+  renderBreadcrumb(category);
+}
 
 if (!productId) {
   document.querySelector('.product-detail').innerHTML =
@@ -12,6 +19,3 @@ if (!productId) {
   const product = new ProductDetails(productId, dataSource);
   product.init();
 }
-
-// load dynamic header and footer
-loadHeaderFooter();
