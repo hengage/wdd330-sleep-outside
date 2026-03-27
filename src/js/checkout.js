@@ -30,14 +30,20 @@ function validateExpirationDate(input) {
     year < currentYear ||
     (year === currentYear && month < currentMonth)
   ) {
-    input.setCustomValidity('Enter an expiration date that is not in the past.');
+    input.setCustomValidity(
+      'Enter an expiration date that is not in the past.',
+    );
     return;
   }
 
   input.setCustomValidity('');
 }
 
-const checkout = new CheckoutProcess('so-cart', '.checkout-summary', new ProductData());
+const checkout = new CheckoutProcess(
+  'so-cart',
+  '.checkout-summary',
+  new ProductData(),
+);
 checkout.init();
 
 const zipInput = document.querySelector('#zip');

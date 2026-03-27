@@ -114,6 +114,25 @@ button {
   border-bottom: 2px solid var(--primary-color);
 }
 
+.breadcrumb {
+  padding: 0.65rem 1rem;
+  font-size: 0.95rem;
+  border-bottom: 1px solid var(--light-grey);
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb a {
+  color: var(--secondary-color);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover,
+.breadcrumb a:focus-visible {
+  text-decoration: underline;
+}
+
 /* End utility classes */
 
 /* Cart icon styles */

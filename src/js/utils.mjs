@@ -95,6 +95,51 @@ export function getParam(param) {
   return urlParams.get(param);
 }
 
+export function formatCategoryName(category) {
+  if (!category) return '';
+
+  return category
+    .split('-')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+}
+
+export function renderBreadcrumb(category, itemCount = null) {
+  const headerElement = document.querySelector('#main-header');
+  if (!headerElement || !category) return;
+
+  const formattedCategory = formatCategoryName(category);
+  const hasItemCount = Number.isInteger(itemCount) && itemCount >= 0;
+  const itemLabel = itemCount === 1 ? 'item' : 'items';
+  const categoryUrl = `/product_listing/index.html?category=${encodeURIComponent(category)}`;
+
+  let breadcrumbElement = document.querySelector('.breadcrumb');
+  if (!breadcrumbElement) {
+    breadcrumbElement = document.createElement('nav');
+    breadcrumbElement.className = 'breadcrumb';
+    breadcrumbElement.setAttribute('aria-label', 'Breadcrumb');
+    headerElement.insertAdjacentElement('afterend', breadcrumbElement);
+  }
+
+  // Clear existing content
+  breadcrumbElement.textContent = '';
+
+  // Create and append the category link safely
+  const linkElement = document.createElement('a');
+  linkElement.href = categoryUrl;
+  linkElement.textContent = formattedCategory;
+  breadcrumbElement.appendChild(linkElement);
+
+  // Optionally append the item count
+  if (hasItemCount) {
+    breadcrumbElement.appendChild(document.createTextNode(' '));
+
+    const countSpan = document.createElement('span');
+    countSpan.textContent = `-> (${itemCount} ${itemLabel})`;
+    breadcrumbElement.appendChild(countSpan);
+  }
+}
+
 // render list with template
 export function renderListWithTemplate(
   templateFn,

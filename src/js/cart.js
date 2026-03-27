@@ -73,7 +73,9 @@ function renderCartTotal(items) {
   const totalEl = document.createElement('p');
   totalEl.classList.add('cart-total');
   totalEl.textContent = `Cart Total: $${total.toFixed(2)}`;
-  document.querySelector('.product-list').insertAdjacentElement('afterend', totalEl);
+  document
+    .querySelector('.product-list')
+    .insertAdjacentElement('afterend', totalEl);
 
   if (items.length > 0) {
     const checkoutLink = document.createElement('a');
