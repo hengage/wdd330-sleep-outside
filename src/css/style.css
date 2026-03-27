@@ -411,6 +411,25 @@ button {
   color: var(--dark-grey);
   font-weight: 700;
 }
+
+.checkout-success {
+  max-width: 40rem;
+}
+
+.success-home-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background-color: var(--secondary-color);
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.success-home-link:hover,
+.success-home-link:focus-visible {
+  background-color: var(--tertiary-color);
+}
 /* =========== End checkout styles =========== */
 
 @media screen and (min-width: 500px) {
