@@ -4,10 +4,12 @@ import { renderProductList } from "./utils.mjs";
 function productCardTemplate(product) {
     return `
         <li class="product-card">
-            <img src="${product.Image}" alt="${product.NameWithoutBrand}">
-            <h2 class="card__brand">${product.Name}</h2>
-            <h3 class="card__name">${product.NameWithoutBrand}</h3>
-            <p class="product-card__price">Price: $${product.ListPrice}</p>
+            <a href="../product_pages/index.html?product=${product.Id}">
+                <img src="${product.Image}" alt="${product.NameWithoutBrand}">
+                <h2 class="card__brand">${product.Name}</h2>
+                <h3 class="card__name">${product.NameWithoutBrand}</h3>
+                <p class="product-card__price">Price: $${product.ListPrice}</p>
+            </a>
         </li>
     `;
 }
