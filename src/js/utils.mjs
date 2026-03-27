@@ -121,8 +121,23 @@ export function renderBreadcrumb(category, itemCount = null) {
     headerElement.insertAdjacentElement('afterend', breadcrumbElement);
   }
 
-  const countMarkup = hasItemCount ? ` <span>-> (${itemCount} ${itemLabel})</span>` : '';
-  breadcrumbElement.innerHTML = `<a href="${categoryUrl}">${formattedCategory}</a>${countMarkup}`;
+  // Clear existing content
+  breadcrumbElement.textContent = '';
+
+  // Create and append the category link safely
+  const linkElement = document.createElement('a');
+  linkElement.href = categoryUrl;
+  linkElement.textContent = formattedCategory;
+  breadcrumbElement.appendChild(linkElement);
+
+  // Optionally append the item count
+  if (hasItemCount) {
+    breadcrumbElement.appendChild(document.createTextNode(' '));
+
+    const countSpan = document.createElement('span');
+    countSpan.textContent = `-> (${itemCount} ${itemLabel})`;
+    breadcrumbElement.appendChild(countSpan);
+  }
 }
 
 // render list with template

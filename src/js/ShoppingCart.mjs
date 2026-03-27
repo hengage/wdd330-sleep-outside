@@ -47,8 +47,6 @@ export default class ShoppingCart {
       true,
     );
 
-    
-
     this.renderCartTotal();
   }
 
