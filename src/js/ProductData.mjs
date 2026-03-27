@@ -28,6 +28,13 @@ async function convertToJson(res) {
     return data;
   }
 
+  console.error('API request failed', {
+    status: res.status,
+    statusText: res.statusText,
+    contentType,
+    data,
+  });
+
   const message =
     data?.message ||
     data?.Message ||

@@ -1,6 +1,6 @@
 import ProductData from './ProductData.mjs';
 import CheckoutProcess from './CheckoutProcess.mjs';
-import { loadHeaderFooter } from './utils.mjs';
+import { alertMessage, loadHeaderFooter } from './utils.mjs';
 
 loadHeaderFooter();
 
@@ -71,13 +71,13 @@ if (form) {
     if (!form.reportValidity()) return;
 
     try {
-      const result = await checkout.checkout(form);
+      await checkout.checkout(form);
       checkout.clearCart();
       form.reset();
       checkout.init();
-      alert(result?.message || 'Order submitted successfully.');
+      window.location.href = '../checkout/success.html';
     } catch (error) {
-      alert(error.message || 'Checkout failed.');
+      alertMessage(error.message || 'Checkout failed.');
     }
   });
 }
