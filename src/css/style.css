@@ -48,27 +48,27 @@ p {
   font-size: 30px;
   text-align: right;
   font-family: var(--font-headline);
-}
 
-.logo img {
-  width: 60px;
-  height: 60px;
-}
+  img {
+    width: 60px;
+    height: 60px;
+  }
 
-.logo a {
-  text-decoration: none;
-  color: var(--font-body);
+  a {
+    text-decoration: none;
+    color: var(--font-body);
+  }
 }
 
 .hero {
   position: relative;
-}
 
-.hero .logo {
-  position: absolute;
-  left: calc(50% - 60px);
-  bottom: -15px;
-  background-color: white;
+  .logo {
+    position: absolute;
+    left: calc(50% - 60px);
+    bottom: -15px;
+    background-color: white;
+  }
 }
 
 .logo--square {
@@ -82,17 +82,18 @@ p {
   justify-content: center;
   align-items: center;
   line-height: 1;
+
+  & img {
+    width: 90px;
+    height: 90px;
+    margin-top: -1.3em;
+  }
+
+  & > div {
+    margin-top: -1.7em;
+  }
 }
 
-.logo--square img {
-  width: 90px;
-  height: 90px;
-  margin-top: -1.3em;
-}
-
-.logo--square > div {
-  margin-top: -1.7em;
-}
 
 /* utility classes */
 .highlight {
@@ -121,15 +122,17 @@ button {
   padding-top: 1em;
   position: relative;
   text-align: center;
+
+  svg {
+    width: 25px;
+  }
+
+  & :hover svg {
+    fill: gray;
+  }
 }
 
-.cart svg {
-  width: 25px;
-}
-
-.cart:hover svg {
-  fill: gray;
-}
+.cart
 
 /* End cart icon styles */
 
@@ -143,12 +146,12 @@ button {
   background-color: var(--dark-grey);
   color: var(--light-grey);
   opacity: 0.8;
-}
 
-.mission p {
-  margin: 0 auto;
-  width: 50%;
-  text-align: center;
+  p {
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
+  }
 }
 
 .products {
@@ -161,12 +164,14 @@ button {
   flex-flow: row wrap;
   list-style-type: none;
   justify-content: center;
+
+  a {
+    text-decoration: none;
+    color: var(--dark-grey);
+  }
 }
 
-.product-list a {
-  text-decoration: none;
-  color: var(--dark-grey);
-}
+.product-list 
 
 /* Styles for product lists */
 .product-card {
@@ -175,12 +180,10 @@ button {
   padding: 0.5em;
   border: 1px solid var(--light-grey);
   max-width: 250px;
-}
 
-.product-card h2,
-.product-card h3,
-.product-card p {
-  margin: 0.5em 0;
+  h2, h3, p {
+    margin: 0.5em 0;
+  }
 }
 
 .card__brand {
@@ -197,10 +200,10 @@ button {
   padding: 1em;
   max-width: 500px;
   margin: auto;
-}
 
-.product-detail img {
-  width: 100%;
+  img {
+    width: 100%;
+  }
 }
 
 /* Start cart list card styles */
@@ -215,15 +218,15 @@ button {
 .cart-card__image {
   grid-row: 1/3;
   grid-column: 1;
-}
 
-.cart-card p {
-  margin-top: 0;
-}
+  p {
+    margin-top: 0;
+  }
 
-.cart-card .card__name {
-  grid-row: 1;
-  grid-column: 2;
+  .card__name {
+    grid-row: 1;
+    grid-column: 2;
+  }
 }
 
 .cart-card__color {
