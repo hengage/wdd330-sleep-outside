@@ -95,6 +95,23 @@ export function getParam(param) {
   return urlParams.get(param);
 }
 
+export function initSearchForm() {
+  const searchForm = document.querySelector('#site-search-form');
+  if (!searchForm || searchForm.dataset.initialized === 'true') return;
+
+  searchForm.dataset.initialized = 'true';
+  searchForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const searchInput = searchForm.querySelector('input[name="search"]');
+    const searchValue = searchInput?.value?.trim();
+    if (!searchValue) return;
+
+    const targetUrl = `/product_listing/index.html?search=${encodeURIComponent(searchValue)}`;
+    window.location.assign(targetUrl);
+  });
+}
+
 export function formatCategoryName(category) {
   if (!category) return '';
 
@@ -184,6 +201,7 @@ export async function loadHeaderFooter() {
   if (headerElement) {
     renderWithTemplate(headerTemplate, headerElement);
     updateCartCount();
+    initSearchForm();
   }
   if (footerElement) {
     renderWithTemplate(footerTemplate, footerElement);

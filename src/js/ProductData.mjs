@@ -33,12 +33,12 @@ async function convertToJson(res) {
     data?.Message ||
     data?.error ||
     (data &&
-    typeof data === 'object' &&
-    Object.keys(data).length > 0 &&
-    Object.values(data).every((value) => typeof value === 'string')
+      typeof data === 'object' &&
+      Object.keys(data).length > 0 &&
+      Object.values(data).every((value) => typeof value === 'string')
       ? Object.entries(data)
-          .map(([, value]) => value)
-          .join(', ')
+        .map(([, value]) => value)
+        .join(', ')
       : null) ||
     (typeof data === 'string' ? data : 'Bad Response');
 
@@ -48,6 +48,14 @@ async function convertToJson(res) {
 export default class ProductData {
   async getData(category) {
     const response = await fetch(buildApiURL(`products/search/${category}`));
+    const data = await convertToJson(response);
+    return data.Result;
+  }
+
+  async searchProducts(searchTerm) {
+    const response = await fetch(
+      buildApiURL(`products/search/${encodeURIComponent(searchTerm)}`),
+    );
     const data = await convertToJson(response);
     return data.Result;
   }
