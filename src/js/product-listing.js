@@ -4,9 +4,9 @@ import { getParam, loadHeaderFooter, qs, renderBreadcrumb } from './utils.mjs';
 
 await loadHeaderFooter();
 
-    const category = getParam('category') || 'tents';
-    const dataSource = new ProductData();
-    const productList = new ProductList(category, dataSource, qs('.product-list'));
+const category = getParam('category') || 'tents';
+const dataSource = new ProductData();
+const productList = new ProductList(category, dataSource, qs('.product-list'));
 
 const products = await productList.init();
 renderBreadcrumb(category, products.length);
